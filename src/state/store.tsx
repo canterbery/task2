@@ -7,7 +7,6 @@ export const store = createStore(
   reducers,
   {
     noteList: initialState,
-    showArchivedNotes: false,
     showNoteForm: { show: false, noteIdForEdit: 0 },
     noteCategories: noteCategories,
   },

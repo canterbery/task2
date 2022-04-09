@@ -39,12 +39,7 @@ interface RestoretAction {
   type: ActionTypes.RESTORE;
   payload: number;
 }
-interface ShowActiveNotes {
-  type: ActionTypes.SHOW_ACTIVE_NOTES;
-}
-interface ShowArchivedNotes {
-  type: ActionTypes.SHOW_ARCHIVED_NOTES;
-}
+
 interface ShowNoteForm {
   type: ActionTypes.SHOW_NOTE_FORM;
   payload?: number;
@@ -62,8 +57,6 @@ type Action =
   | DeletetAction
   | ArchiveAction
   | RestoretAction
-  | ShowActiveNotes
-  | ShowArchivedNotes
   | ShowNoteForm
   | CloseNoteForm
   | GetTaskTypes;

@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, ButtonGroup, Table } from "react-bootstrap";
+import React, { useState } from "react";
+import { ButtonGroup, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as ActionCreators from "../state/action-creators";
@@ -9,13 +9,12 @@ import { OverlayedSecButton } from "./OverlayedSecButton";
 
 export default function NoteTable() {
   const notes = useSelector((state: State) => state.noteList);
-  const showArchived = useSelector((state: State) => state.showArchivedNotes);
+  const [showArchived, setDisplayMode] = useState(false);
 
   const dispatch = useDispatch();
   const {
     deleteNote,
-    showActiveNotes,
-    showArchivedNotes,
+
     archiveNote,
     restoreNote,
     showNoteForm,
@@ -68,7 +67,7 @@ export default function NoteTable() {
                   <OverlayedSecButton
                     message={"Show Archived Notes"}
                     pic={<i className="bi bi-calendar"></i>}
-                    onclick={() => showArchivedNotes()}
+                    onclick={() => setDisplayMode(true)}
                   />
                 )}
 
@@ -76,7 +75,7 @@ export default function NoteTable() {
                   <OverlayedSecButton
                     message={"Show Active Notes"}
                     pic={<i className="bi bi-calendar3"></i>}
-                    onclick={() => showActiveNotes()}
+                    onclick={() => setDisplayMode(false)}
                   />
                 )}
               </ButtonGroup>

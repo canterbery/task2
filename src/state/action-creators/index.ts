@@ -47,22 +47,6 @@ export const restoreNote = (id: number) => {
   };
 };
 
-export const showActiveNotes = () => {
-  return (dispatch: Dispatch<Action>) => {
-    dispatch({
-      type: ActionTypes.SHOW_ACTIVE_NOTES,
-    });
-  };
-};
-
-export const showArchivedNotes = () => {
-  return (dispatch: Dispatch<Action>) => {
-    dispatch({
-      type: ActionTypes.SHOW_ARCHIVED_NOTES,
-    });
-  };
-};
-
 export const showNoteForm = (id?: number) => {
   return (dispatch: Dispatch<Action>) => {
     dispatch({
