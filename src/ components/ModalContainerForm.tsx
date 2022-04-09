@@ -10,7 +10,7 @@ import { EditNoteForm } from "./EditNoteForm";
 
 import { AddNoteForm } from "./AddNoteForm";
 
-function NoteForm() {
+function ModalContainerForm() {
   const showForm = useSelector((state: State) => state.showNoteForm);
 
   const notes = useSelector((state: State) => state.noteList);
@@ -40,4 +40,4 @@ function NoteForm() {
   );
 }
 
-export default NoteForm;
+export default ModalContainerForm;

@@ -2,7 +2,7 @@ import { ActionTypes } from "../action-types";
 import Action from "../actions";
 import { noteCategories } from "../initialState";
 
-const taskTypesReducer = (state = noteCategories, action: Action) => {
+const noteCategoriesReducer = (state = noteCategories, action: Action) => {
   switch (action.type) {
     case ActionTypes.GET_TASK_TYPES:
       return state;
@@ -12,4 +12,4 @@ const taskTypesReducer = (state = noteCategories, action: Action) => {
   }
 };
 
-export default taskTypesReducer;
+export default noteCategoriesReducer;

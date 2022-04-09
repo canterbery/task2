@@ -2,13 +2,13 @@ import { combineReducers } from "redux";
 import filterReducer from "./filterReducer";
 import noteReducer from "./noteReducer";
 import noteFormReducer from "./noteFormReducer";
-import taskTypesReducer from "./taskTypesReducer";
+import noteCategoriesReducer from "./noteCategoriesReducer";
 
 const reducers = combineReducers({
   noteList: noteReducer,
   showArchivedNotes: filterReducer,
   showNoteForm: noteFormReducer,
-  noteCategories: taskTypesReducer,
+  noteCategories: noteCategoriesReducer,
 });
 
 export default reducers;

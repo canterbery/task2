@@ -1,24 +1,9 @@
 import { Table } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { noteCategories } from "../state/initialState";
 import { State } from "../state/reducers";
 
 export function SummaryTable() {
   const notes = useSelector((state: State) => state.noteList);
-
-  /* function getSummaryStats() {
-    let data:any;
-    noteCategories.forEach((elem) => {
-      data[elem] = [0, 0];
-    });
-  
-    notes.forEach((elem) => {
-      let cur = data[elem.category];
-      elem.isArchived ? cur[1]++ : cur[0]++;
-    });
-    return data;
-  }
-  const data = getSummaryStats();*/
 
   function getSummaryStats() {
     let result: {

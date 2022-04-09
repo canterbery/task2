@@ -1,5 +1,5 @@
 import React from "react";
-import NoteForm from "./ components/NoteForm";
+import ModalContainerForm from "./ components/ModalContainerForm";
 import NoteTable from "./ components/NoteTable";
 import { SummaryTable } from "./ components/SummaryTable";
 import "./App.css";
@@ -7,7 +7,7 @@ import "./App.css";
 function App() {
   return (
     <div>
-      <NoteForm />
+      <ModalContainerForm />
       <NoteTable />
       <SummaryTable />
     </div>
