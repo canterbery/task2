@@ -39,7 +39,7 @@ export function SummaryTable() {
 
   return (
     <>
-      <Table striped bordered hover size="sm">
+      <Table striped bordered hover variant="dark" size="sm">
         <thead>
           <tr>
             <th scope="col" width="50%">

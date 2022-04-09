@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import * as ActionCreators from "../state/action-creators";
 import { NoteList } from "../state/initialState";
 import { State } from "../state/reducers";
+import { OverlayedSecButton } from "./OverlayedSecButton";
 
 export default function NoteTable() {
   const notes = useSelector((state: State) => state.noteList);
@@ -57,23 +58,26 @@ export default function NoteTable() {
             </th>
             <th scope="col" width="5%">
               <ButtonGroup>
-                <Button variant="secondary" onClick={() => showNoteForm()}>
-                  <i className="bi bi-plus-square"></i>
-                </Button>
+                <OverlayedSecButton
+                  message={"Add Note"}
+                  pic={<i className="bi bi-plus-square"></i>}
+                  onclick={() => showNoteForm()}
+                />
 
                 {!showArchived && (
-                  <Button
-                    variant="secondary"
-                    onClick={() => showArchivedNotes()}
-                  >
-                    <i className="bi bi-calendar"></i>
-                  </Button>
+                  <OverlayedSecButton
+                    message={"Show Archived Notes"}
+                    pic={<i className="bi bi-calendar"></i>}
+                    onclick={() => showArchivedNotes()}
+                  />
                 )}
 
                 {showArchived && (
-                  <Button variant="secondary" onClick={() => showActiveNotes()}>
-                    <i className="bi bi-calendar3"></i>
-                  </Button>
+                  <OverlayedSecButton
+                    message={"Show Active Notes"}
+                    pic={<i className="bi bi-calendar3"></i>}
+                    onclick={() => showActiveNotes()}
+                  />
                 )}
               </ButtonGroup>
             </th>
@@ -90,38 +94,34 @@ export default function NoteTable() {
                 <td>{note.dates}</td>
                 <td>
                   <ButtonGroup>
-                    <Button
-                      variant="secondary"
-                      onClick={() => {
+                    <OverlayedSecButton
+                      message={"Edit"}
+                      pic={<i className="bi bi-pencil"></i>}
+                      onclick={() => {
                         showNoteForm(note.id);
                       }}
-                    >
-                      <i className="bi bi-pencil"></i>
-                    </Button>
+                    />
 
                     {!showArchived && (
-                      <Button
-                        variant="secondary"
-                        onClick={() => archiveNote(note.id)}
-                      >
-                        <i className="bi bi-calendar"></i>
-                      </Button>
+                      <OverlayedSecButton
+                        message={"Archive"}
+                        pic={<i className="bi bi-calendar"></i>}
+                        onclick={() => archiveNote(note.id)}
+                      />
                     )}
                     {showArchived && (
-                      <Button
-                        variant="secondary"
-                        onClick={() => restoreNote(note.id)}
-                      >
-                        <i className="bi bi-calendar3"></i>
-                      </Button>
+                      <OverlayedSecButton
+                        message={"Restore"}
+                        pic={<i className="bi bi-calendar3"></i>}
+                        onclick={() => restoreNote(note.id)}
+                      />
                     )}
 
-                    <Button
-                      variant="secondary"
-                      onClick={() => deleteNote(note.id)}
-                    >
-                      <i className="bi bi-trash"></i>
-                    </Button>
+                    <OverlayedSecButton
+                      message="Delete"
+                      pic={<i className="bi bi-trash"></i>}
+                      onclick={() => deleteNote(note.id)}
+                    />
                   </ButtonGroup>
                 </td>
               </tr>

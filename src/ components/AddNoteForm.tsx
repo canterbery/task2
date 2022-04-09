@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import { State } from "../state/reducers";
 import * as ActionCreators from "../state/action-creators";
 import { getNextId } from "../state/initialState";
+import { checkStringForDates } from "../utils/checkStringFroDates";
 
 export function AddNoteForm() {
   const dispatch = useDispatch();
@@ -29,15 +30,10 @@ export function AddNoteForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    let dates = noteForEdit.content
-      .replace(/(\r\n|\n|\r)/gm, "")
-      .match(/(\d{1,4}([.\-/])\d{1,2}([.\-/])\d{1,4})/g);
-    let checkedDates = dates === null ? "" : dates.toString();
-
     let partNote = {
       id: getNextId(),
       created: new Date().toDateString(),
-      dates: checkedDates,
+      dates: checkStringForDates(noteForEdit.content),
       isArchived: false,
     };
     let fullNote = Object.assign(partNote, noteForEdit);
@@ -55,7 +51,9 @@ export function AddNoteForm() {
           name="category"
           onChange={handleChange}
           value={noteForEdit.category}
+          required
         >
+          <option></option>
           {taskTypes.map((elem) => {
             return (
               <option key={elem} value={elem}>
@@ -84,7 +82,7 @@ export function AddNoteForm() {
         </span>
         <textarea
           className="form-control"
-          aria-label="With textarea"
+          required
           height="100px"
           onChange={handleChange}
           name="content"

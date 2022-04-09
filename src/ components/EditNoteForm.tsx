@@ -5,6 +5,7 @@ import { Note } from "../state/initialState";
 import { State } from "../state/reducers";
 import * as ActionCreators from "../state/action-creators";
 import { Button, Modal } from "react-bootstrap";
+import { checkStringForDates } from "../utils/checkStringFroDates";
 
 export function EditNoteForm(note: Note) {
   const dispatch = useDispatch();
@@ -13,7 +14,9 @@ export function EditNoteForm(note: Note) {
     dispatch
   );
 
-  const [noteForEdit, setNote] = useState(note);
+  const { isArchived, id, created, dates, ...noteFieldsForEdit } = note;
+
+  const [noteForEdit, setNote] = useState(noteFieldsForEdit);
   const handleChange = (e: any) => {
     setNote({
       ...noteForEdit,
@@ -25,7 +28,16 @@ export function EditNoteForm(note: Note) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    updateNote(noteForEdit);
+    let partNote = {
+      id: note.id,
+      isArchived: note.isArchived,
+      created: note.created,
+      dates: checkStringForDates(noteForEdit.content),
+    };
+
+    let fullNote = Object.assign(partNote, noteForEdit);
+
+    updateNote(fullNote);
     closeNoteForm();
   };
   return (
@@ -68,7 +80,7 @@ export function EditNoteForm(note: Note) {
         </span>
         <textarea
           className="form-control"
-          aria-label="With textarea"
+          required
           height="100px"
           onChange={handleChange}
           name="content"
