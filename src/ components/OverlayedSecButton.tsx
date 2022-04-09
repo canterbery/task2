@@ -1,5 +1,4 @@
 import { OverlayTrigger, Tooltip, Button } from "react-bootstrap";
-import { Placement } from "react-bootstrap/esm/types";
 
 export interface OverlayedSecButtonProps {
   message: string;
