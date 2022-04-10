@@ -1,7 +1,7 @@
 import React from "react";
-import ModalContainerForm from "./ components/ModalContainerForm";
-import NoteTable from "./ components/NoteTable";
-import { SummaryTable } from "./ components/SummaryTable";
+import ModalContainerForm from "./pages/ModalContainerForm";
+import NoteTable from "./pages/NoteTable";
+import { SummaryTable } from "./pages/SummaryTable";
 import "./App.css";
 
 function App() {

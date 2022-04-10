@@ -5,21 +5,15 @@ import { bindActionCreators } from "redux";
 import * as ActionCreators from "../state/action-creators";
 import { NoteList } from "../state/initialState";
 import { State } from "../state/reducers";
-import { NoteButtonGroup } from "./NoteButtonGroup";
-import { OverlayedSecButton } from "./OverlayedSecButton";
+import { NoteButtonGroup } from "../ components/NoteButtonGroup";
+import { OverlayedSecButton } from "../ components/OverlayedSecButton";
 
 export default function NoteTable() {
   const notes = useSelector((state: State) => state.noteList);
   const [showArchived, setDisplayMode] = useState(false);
 
   const dispatch = useDispatch();
-  const {
-    deleteNote,
-
-    archiveNote,
-    restoreNote,
-    showNoteForm,
-  } = bindActionCreators(ActionCreators, dispatch);
+  const { showNoteForm } = bindActionCreators(ActionCreators, dispatch);
 
   function selectArchivedNotes(notes: NoteList) {
     return notes.filter((item, index) => item.isArchived === true);
