@@ -5,7 +5,7 @@ import { State } from "../state/reducers";
 import * as ActionCreators from "../state/action-creators";
 import { ModalBody } from "react-bootstrap";
 import React from "react";
-import { NoteList } from "../state/initialState";
+import { Note, NoteList } from "../state/initialState";
 import { EditNoteForm } from "./EditNoteForm";
 
 import { AddNoteForm } from "./AddNoteForm";
@@ -22,6 +22,10 @@ function ModalContainerForm() {
   }
 
   const currentNote = selectCurrentNote(notes);
+
+  function exists(note: Note) {
+    return !!note;
+  }
 
   return (
     <>

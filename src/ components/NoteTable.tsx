@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import * as ActionCreators from "../state/action-creators";
 import { NoteList } from "../state/initialState";
 import { State } from "../state/reducers";
+import { NoteButtonGroup } from "./NoteButtonGroup";
 import { OverlayedSecButton } from "./OverlayedSecButton";
 
 export default function NoteTable() {
@@ -92,36 +93,7 @@ export default function NoteTable() {
                 <td>{note.content}</td>
                 <td>{note.dates}</td>
                 <td>
-                  <ButtonGroup>
-                    <OverlayedSecButton
-                      message={"Edit"}
-                      pic={<i className="bi bi-pencil"></i>}
-                      onclick={() => {
-                        showNoteForm(note.id);
-                      }}
-                    />
-
-                    {!showArchived && (
-                      <OverlayedSecButton
-                        message={"Archive"}
-                        pic={<i className="bi bi-calendar"></i>}
-                        onclick={() => archiveNote(note.id)}
-                      />
-                    )}
-                    {showArchived && (
-                      <OverlayedSecButton
-                        message={"Restore"}
-                        pic={<i className="bi bi-calendar3"></i>}
-                        onclick={() => restoreNote(note.id)}
-                      />
-                    )}
-
-                    <OverlayedSecButton
-                      message="Delete"
-                      pic={<i className="bi bi-trash"></i>}
-                      onclick={() => deleteNote(note.id)}
-                    />
-                  </ButtonGroup>
+                  <NoteButtonGroup id={note.id} showArchived={showArchived} />
                 </td>
               </tr>
             );
