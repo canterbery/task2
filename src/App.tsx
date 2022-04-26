@@ -1,14 +1,15 @@
 import React from "react";
 import ModalContainerForm from "./pages/ModalContainerForm";
-import NoteTable from "./pages/NoteTable";
 import { SummaryTable } from "./pages/SummaryTable";
 import "./App.css";
+import { TableNoteList } from "./pages/TableNoteList";
+import { TailwindModal } from "./pages/TailwindModal";
 
 function App() {
   return (
     <div>
-      <ModalContainerForm />
-      <NoteTable />
+      <TailwindModal />
+      <TableNoteList />
       <SummaryTable />
     </div>
   );
